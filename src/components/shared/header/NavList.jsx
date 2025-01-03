@@ -13,7 +13,7 @@ export const NavList=() =>{
           href="#"
           className="flex items-center hover:text-blue-500 transition-colors"
         >
-          Pages
+          Mobiles
         </a>
       </Typography>
       <Typography
@@ -26,7 +26,7 @@ export const NavList=() =>{
           href="#"
           className="flex items-center hover:text-blue-500 transition-colors"
         >
-          Account
+          Automobiles
         </a>
       </Typography>
       <Typography
@@ -39,7 +39,7 @@ export const NavList=() =>{
           href="#"
           className="flex items-center hover:text-blue-500 transition-colors"
         >
-          Blocks
+          Business
         </a>
       </Typography>
       <Typography
@@ -52,7 +52,7 @@ export const NavList=() =>{
           href="#"
           className="flex items-center hover:text-blue-500 transition-colors"
         >
-          Docs
+          Tech
         </a>
       </Typography>
     </ul>

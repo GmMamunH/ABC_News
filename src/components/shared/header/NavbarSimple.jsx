@@ -26,7 +26,7 @@ export function NavbarSimple() {
   return (
     <Navbar className="mx-auto max-w-screen-xl px-6 py-3">
       <div className="flex items-center justify-between text-blue-gray-900">
-        <img className="w-24" src={logo} alt="abc logo" />
+        <img className="w-24" src={logo} alt="abc-logo" />
         <div className="hidden lg:block">
           <NavList />
         </div>

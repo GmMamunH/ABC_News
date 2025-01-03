@@ -1,12 +1,15 @@
 import { Typography } from "@material-tailwind/react";
 
+import logo from "../../../assets/logo/abclogo.png";
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
   return (
     <footer className="w-full border-t border-blue-gray-50 py-6 mt-3">
       <div className="w-10/12 mx-auto flex flex-col md:flex-row gap-3 items-center justify-between">
-        <Typography color="blue-gray" className="font-normal">
-          &copy; {currentYear} abc news
+        <Typography color="blue-gray" className="font-normal flex items-center gap-2">
+          &copy; {currentYear}{" "}
+          <img className="w-24" src={logo} alt="abc logo" />
         </Typography>
         <ul className="flex flex-wrap  items-center flex-col md:flex-row gap-3 ">
           <li>
