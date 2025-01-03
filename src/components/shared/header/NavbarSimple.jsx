@@ -2,7 +2,6 @@ import React from "react";
 import {
   Navbar,
   Collapse,
-  Typography,
   IconButton,
 } from "@material-tailwind/react";
 import { IoClose } from "react-icons/io5";
@@ -37,7 +36,7 @@ export function NavbarSimple() {
           ripple={false}
           onClick={() => setOpenNav(!openNav)}
         >
-          {openNav ? <IoClose /> : <IoMdMenu />}
+          {openNav ? <IoClose size={28}/> : <IoMdMenu size={28}/>}
         </IconButton>
       </div>
       <Collapse open={openNav}>
