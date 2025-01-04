@@ -28,7 +28,7 @@ export const Business = () => {
   }, []);
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-1"> 
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5"> 
         {loading?(<Loading/>):posts.map((post) => (
           <div key={post?.index}>
             <BusinessPost post={post} />
