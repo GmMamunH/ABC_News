@@ -7,7 +7,7 @@ export const MainLayout = () => {
   return (
     <>
       <NavbarSimple />
-      <div>
+      <div className="w-10/12 mx-auto py-2 px-3">
         <Outlet/>
       </div>
       <Footer/>
