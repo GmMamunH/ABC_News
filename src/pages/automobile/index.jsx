@@ -1,6 +1,6 @@
 
 
-export const index = () => {
+export const Index = () => {
   return (
     <div>index</div>
   )

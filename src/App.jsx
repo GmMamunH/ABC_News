@@ -1,6 +1,5 @@
 
-import { Footer } from "./components/shared/footer/Footer"
-import { NavbarSimple } from "./components/shared/header/NavbarSimple"
+import { MainLayout } from "./layout/MainLayout"
 
 
 function App() {
@@ -8,8 +7,7 @@ function App() {
   return (
     <>
       <div>
-       <NavbarSimple/>
-       <Footer/>
+       <MainLayout/>
       </div>
       
     </>
