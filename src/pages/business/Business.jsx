@@ -1,9 +1,12 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
+import { BusinessPost } from "./BusinessPost";
+import { Loading } from "../../components/shared/loader/Loading";
 
 export const Business = () => {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading]=useState(true)
   useEffect(() => {
     axios
       .get(
@@ -13,6 +16,7 @@ export const Business = () => {
         // handle success
         console.log(response?.data?.articles);
         setPosts(response?.data?.articles);
+        setLoading(false)
       })
       .catch(function (error) {
         // handle error
@@ -24,11 +28,13 @@ export const Business = () => {
   }, []);
   return (
     <>
-      {posts.map((post) => (
-        <div key={post?.index}>
-          <p>{post?.content}</p>
-        </div>
-      ))}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-1"> 
+        {loading?(<Loading/>):posts.map((post) => (
+          <div key={post?.index}>
+            <BusinessPost post={post} />
+          </div>
+        ))}
+      </div>
     </>
   );
 };
