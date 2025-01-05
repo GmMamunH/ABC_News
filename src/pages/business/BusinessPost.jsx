@@ -5,9 +5,9 @@ import {
   CardHeader,
   CardBody,
   CardFooter,
-  Typography,
   Button,
 } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 export const BusinessPost = ({ post }) => {
   return (
@@ -28,7 +28,9 @@ export const BusinessPost = ({ post }) => {
         </Tooltip>
       </CardBody>
       <CardFooter className="pt-0">
-        <Button>Read More</Button>
+        <Link to={`/business-details/${post.title}`}>
+          <Button>Read More</Button>
+        </Link>
       </CardFooter>
     </Card>
   );
