@@ -25,6 +25,7 @@ export const BusinessDetails = () => {
       {post ? (
         <>
           <h1 className="text-3xl font-bold">{post.title}</h1>
+          <p>{post.author}</p>
           <img
             src={post.urlToImage}
             alt={post.title}
