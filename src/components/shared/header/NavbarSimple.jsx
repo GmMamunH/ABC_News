@@ -8,6 +8,7 @@ import { IoClose } from "react-icons/io5";
 import { IoMdMenu } from "react-icons/io";
 import { NavList } from "./NavList";
 import logo from "../../../assets/logo/abclogo.png"
+import { Link } from "react-router-dom";
 
 export function NavbarSimple() {
   const [openNav, setOpenNav] = React.useState(false);
@@ -26,7 +27,9 @@ export function NavbarSimple() {
   return (
     <Navbar className="mx-auto max-w-screen-xl px-6 py-3">
       <div className="flex items-center justify-between text-blue-gray-900">
-        <img className="w-24" src={logo} alt="abc-logo" />
+        <Link to={"/"}>
+          <img className="w-24" src={logo} alt="abc-logo" />
+        </Link>
         <div className="hidden lg:block">
           <NavList />
         </div>
@@ -36,7 +39,7 @@ export function NavbarSimple() {
           ripple={false}
           onClick={() => setOpenNav(!openNav)}
         >
-          {openNav ? <IoClose size={28}/> : <IoMdMenu size={28}/>}
+          {openNav ? <IoClose size={28} /> : <IoMdMenu size={28} />}
         </IconButton>
       </div>
       <Collapse open={openNav}>
