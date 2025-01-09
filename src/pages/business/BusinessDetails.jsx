@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Loading } from "../../components/shared/loader/Loading";
+import { CardPlacehoderSkeleton } from "../../components/shared/loader/CardPlacehoderSkeleton";
 
 export const BusinessDetails = () => {
   const { title } = useParams();
@@ -35,7 +36,7 @@ export const BusinessDetails = () => {
           <p className="text-gray-500 mt-2">{post.content}</p>
         </>
       ) : (
-        <Loading/>
+        <CardPlacehoderSkeleton/>
       )}
     </div>
   );

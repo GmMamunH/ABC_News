@@ -1,40 +1,56 @@
 import axios from "axios";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BusinessPost } from "./BusinessPost";
-import { Loading } from "../../components/shared/loader/Loading";
+import { CardPlacehoderSkeleton } from "../../components/shared/loader/CardPlacehoderSkeleton";
 
 export const Business = () => {
   const [posts, setPosts] = useState([]);
-  const [loading, setLoading]=useState(true)
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const [hasMore, setHasMore] = useState(true);
+
   useEffect(() => {
+    setLoading(true);
     axios
       .get(
-        "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=0cc82a8a00ef4b29b7c20b3705bb46e0"
+        `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=0cc82a8a00ef4b29b7c20b3705bb46e0&page=${page}&pageSize=3`
       )
-      .then(function (response) {
-        // handle success
-        console.log(response?.data?.articles);
-        setPosts(response?.data?.articles);
-        setLoading(false)
+      .then((response) => {
+        const newPosts = response?.data?.articles || [];
+        setPosts((prevPosts) => [...prevPosts, ...newPosts]);
+        setHasMore(newPosts.length > 0);
+        setLoading(false);
       })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .finally(function () {
-        // always executed
-      });
-  }, []);
+      .catch((error) => console.error(error));
+  }, [page]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (
+        window.innerHeight + document.documentElement.scrollTop >=
+          document.documentElement.offsetHeight - 100 &&
+        hasMore &&
+        !loading
+      ) {
+        setPage((prevPage) => prevPage + 1);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [hasMore, loading]);
+
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5"> 
-        {loading?(<Loading/>):posts.map((post) => (
-          <div key={post?.index}>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {posts.map((post, index) => (
+          <div key={index}>
             <BusinessPost post={post} />
           </div>
         ))}
       </div>
+      {loading && <CardPlacehoderSkeleton />}
+      
     </>
   );
 };
