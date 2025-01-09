@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { BusinessPost } from "./BusinessPost";
 import { Loading } from "../../components/shared/loader/Loading";
+import { CardPlacehoderSkeleton } from "../../components/shared/loader/CardPlacehoderSkeleton";
 
 export const Business = () => {
   const [posts, setPosts] = useState([]);
@@ -29,7 +30,7 @@ export const Business = () => {
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5"> 
-        {loading?(<Loading/>):posts.map((post) => (
+        {loading?(<CardPlacehoderSkeleton/>):posts.map((post) => (
           <div key={post?.index}>
             <BusinessPost post={post} />
           </div>
